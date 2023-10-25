@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--Property of Kalista Shields-->
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Qualification</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+
+    <script>let keywords = ['javascript', 'regex', 'programming', 'example'];
+        let minExperience;
+
+        //function to update minimum experience
+
+        function updateMinExperience() {
+            minExperience = parseInt(document.getElementById('minExperienceInput').value);
+        }
+        // Function to handle file upload and check qualification for PDF files
+        async function handlePdfUpload(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const typedarray = new Uint8Array(reader.result);
+                pdfjsLib.getDocument(typedarray).promise
+                    .then(async pdf => {
+                        const textContent = await Promise.all([...Array(pdf.numPages).keys()].map(async (i) => {
+                            const page = await pdf.getPage(i + 1);
+                            const content = await page.getTextContent();
+                            return content.items.map(item => item.str).join(' ');
+                        }));
+                        checkQualification(textContent);
+                    })
+                    .catch(error => console.error(error));
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Function to calculate qualification level based on the percentage of keywords found
+        function calculateQualificationPercentage(fileContent) {
+            const totalKeywords = keywords.length;
+            const foundKeywords = keywords.filter(keyword => fileContent.includes(keyword)).length;
+            let percentage = (foundKeywords / totalKeywords) * 100;
+
+            // Adjust score based on work experience
+            if (minExperience > 0) {
+                const currentYear = new Date().getFullYear();
+                const yearsOfExperience = currentYear - minExperience;
+
+                if (yearsOfExperience >= 0) {
+                    percentage += 5;
+                } else {
+                    percentage -= 5;
+                }
+            }
+
+            return Math.max(percentage, 0);
+        }
+
+        // Function to check qualification based on the extracted text
+        function checkQualification(text) {
+            const fileContent = text.join('\n').toLowerCase();
+
+            // Calculate the percentage of keywords found
+            const percentage = calculateQualificationPercentage(fileContent);
+
+            // Determine qualification level
+            let qualificationLevel = '';
+            if (percentage >= 80 && percentage <= 100) {
+                qualificationLevel = 'Perfect for the Role';
+            } else if (percentage >= 61 && percentage <= 79) {
+                qualificationLevel = 'Incredibly Qualified';
+            } else if (percentage >= 50 && percentage <= 60) {
+                qualificationLevel = 'Average Qualified';
+            } else if (percentage <= 49 && percentage >= 30) {
+                qualificationLevel = 'Borderline Qualified';
+            } else if (percentage <= 29) {
+                qualificationLevel = 'Not Qualified';
+            }
+
+            // Display a pop-up with the qualification level, percentage of keywords met, and work experience adjustment
+            alert(`Qualification Level: ${qualificationLevel} (${percentage.toFixed(2)}% of keywords met)`);
+        }
+
+        // Function to update keywords array from the input box
+        function updateKeywords() {
+            const keywordsInput = document.getElementById('keywordsInput').value;
+            keywords = keywordsInput.split(',').map(keyword => keyword.trim());
+        }
+
+        // Function to update minimum work experience from the input box
+
+        function updateMinExperience() {
+            minExperience = parseInt(document.getElementById('minExperienceInput').value);
+        }</script>
+</head>
+
+<body>
+    <h1>Keyword Qualification</h1>
+    <h3>Instructions</h3>
+    <ul>
+        <li>Upload the Keywords you want to search for</li>
+        <li>Upload the amount of minimum working experience you are looking for</li>
+        <li>Press update criteria button</li>
+        <li>Upload Resume</li>
+    </ul>
+    <label for="pdfInput">Upload a PDF file:</label>
+    <input type="file" id="pdfInput" name="pdfInput" accept=".pdf" onchange="handlePdfUpload(event)"><br><br>
+
+    <label for="keywordsInput">Enter Keywords (comma-separated):</label>
+    <input type="text" id="keywordsInput" name="keywordsInput" placeholder="e.g., javascript, regex, programming"><br><br>
+
+    <label for="minExperienceInput">Minimum Work Experience (years):</label>
+    <input type="number" id="minExperienceInput" name="minExperienceInput"><br><br>
+
+    <button type="button" onclick="updateKeywords(); updateMinExperience();">Update Criteria</button>
+    <button type="button" onclick="checkQualification([]);">Check Qualification</button>
+</body>
+
+</html>

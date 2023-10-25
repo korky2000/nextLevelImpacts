@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Transcription</title>
+</head>
+
+<body>
+    <h1>Audio Transcription</h1>
+    <input type="file" id="audioFileInput" accept="audio/*">
+    <button onclick="transcribeAudio()">Transcribe</button>
+    <div id="transcriptionResult"></div>
+
+    <script>async function transcribeAudio() {
+            const audioFileInput = document.getElementById('audioFileInput');
+            const transcriptionResult = document.getElementById('transcriptionResult');
+            const file = audioFileInput.files[0];
+
+            if (!file) {
+                console.error('No file selected.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onloadend = async function () {
+                const audioData = reader.result.split(',')[1];
+                const response = await transcribeWithGoogleSpeechAPI(audioData);
+                transcriptionResult.textContent = response.results[0].alternatives[0].transcript;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function transcribeWithGoogleSpeechAPI(audioData) {
+            const response = await fetch('https://speech.googleapis.com/v1/speech:recognize?key=YOUR_GOOGLE_CLOUD_API_KEY', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    config: {
+                        encoding: 'LINEAR16',
+                        sampleRateHertz: 16000,
+                        languageCode: 'en-US',
+                    },
+                    audio: {
+                        content: audioData,
+                    },
+                }),
+            });
+            return response.json();
+        }</script>
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 400%;
+        }
+
+        .top-navbar {
+            background-color: #004B7A;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            z-index: 1000;
+        }
+        .overlayHeader {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+            .logo img {
+                margin-right: 10px;
+            }
+
+        .menu {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+        }
+
+        .main-navbar {
+            background-color: #f2f2f2;
+            color: black;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            height: 80px;
+            z-index: 1000;
+        }
+
+        .mainLogo {
+            display: flex;
+            align-items: center;
+        }
+
+            .mainLogo img {
+                height: 60px;
+                width: auto;
+            }
+
+        .menuMain {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #f2f2f2;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menuMain a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #004B7A;
+        }
+
+        .header {
+            background: url('https://previews.123rf.com/images/chagin/chagin1305/chagin130500400/19729949-happy-business-people-in-a-meeting-at-office.jpg') center/cover no-repeat;
+            height: 400px;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .header-content {
+            z-index: 1;
+            padding: 50px;
+            margin: 50px;
+        }
+
+        .content {
+            background-color: #f2f2f2;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+            .content img {
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                margin-right: 20px; /* Adjust the spacing between image and text */
+            }
+
+        .content-text {
+            flex: 1; /* Allow the text to take remaining space */
+        }
+
+        .content h2 {
+            color: #004B7A;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #230007;
+        }
+
+        .content2 {
+            background-color: #004B7A;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+            .content2 img {
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                margin-right: 20px; /* Adjust the spacing between image and text */
+            }
+
+        .content2-text {
+            flex: 1; /* Allow the text to take remaining space */
+        }
+
+        .content2 h2 {
+            color: #886F68;
+        }
+
+        .content2 p {
+            font-size: 18px;
+            color: #E6E6E6;
+        }
+        .headshot {
+            width:350px;
+            height:350px;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block; /* Ensures the container only takes as much space as the image */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+            color: white; /* Text color on the overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Initially, the overlay is invisible */
+            transition: 0.3s; /* Smooth transition for the overlay effect */
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1; /* When hovering over the image container, the overlay becomes visible */
+        }
+
+        /* Additional styles for the overlay text */
+        .overlay-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px;
+        }
+    </style>
+    <title>Our Team</title>
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="logo">
+            <a href="https://www.facebook.com/NextLevelImpacts" target="_blank">
+                <img src="https://i.imgur.com/rHJit0V.png" width="25"
+                     height="25" alt="Facebook Icon" />
+            </a>
+            <a href="https://www.linkedin.com/company/next-level-impacts/" target="_blank">
+                <img src="https://i.imgur.com/tvDlPAG.png" width="25"
+                     height="25" alt="LinkedIn Icon" />
+            </a>
+        </div>
+        <div class="menu">
+            <a href="#candidates">For Candidates</a>
+            <a href="#employers">For Employers</a>
+            <a href="#contact">Contact</a>
+            <a href="#careers">Careers</a>
+        </div>
+    </div>
+
+    <div class="main-navbar">
+        <div class="mainLogo">
+            <img src="https://www.nextlevelimpacts.com/wp-content/uploads/2021/03/next-level-logo.png" alt="Next Level Impacts Logo" />
+        </div>
+        <div class="menuMain">
+            <a href="#why">Why Next Level Impacts</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+
+    </div>
+    </div>
+
+    <div class="header">
+        <div class="overlayHeader"></div>
+        <div class="header-content">
+            <h1>Meet Our Team</h1>
+            <p>
+                . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                id est laborum.
+            </p>
+        </div>
+    </div>
+    <!--Content 1-->
+    <div class="content">
+        <div class="image-container">
+            <img class="headshot" src="https://media.licdn.com/dms/image/C4E03AQHAJOzMlvCA2A/profile-displayphoto-shrink_400_400/0/1517679776564?e=1702512000&v=beta&t=SAXC67Yukt_0tRM3ZstqGJhqDUngtaRw44e4Oympqkc" alt="Keith Roher">
+            <div class="overlay">
+                <div class="overlay-text">
+                    <a href="https://www.linkedin.com/in/keith-roher-3313456/" target="_blank"><img src="https://i.imgur.com/tvDlPAG.png" width="25" height="25" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="content-text">
+
+            <h2>Keith Roher, CEO</h2>
+            <p>
+                Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum. Egestas sed sed risus pretium quam vulputate dignissim suspendisse in. Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+            </p>
+        </div>
+    </div>
+    <!--Content 2-->
+    <div class="content2">
+        <div class="image-container">
+
+            <img class="headshot" src="https://media.licdn.com/dms/image/C4D03AQFDpOUKuxP4zg/profile-displayphoto-shrink_800_800/0/1618926434354?e=1702512000&v=beta&t=MH5dYRV0hDSnr5wZMgq-JLDLV8FBn3qlqpZztNDjVUY" alt="John Underwood">
+            <div class="overlay">
+                <div class="overlay-text">
+                    <a href="https://www.linkedin.com/in/john-underwood-connect/" target="_blank"><img src="https://i.imgur.com/tvDlPAG.png" width="25" height="25" /></a>
+                </div>
+            </div>
+            </div>
+            <div class="content-text">
+
+                <h2>John Underwood, VP Business Development</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum. Egestas sed sed risus pretium quam vulputate dignissim suspendisse in. Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+                </p>
+        </div>
+        </div>
+        <!--Content 3-->
+
+    <div class="content">
+        <div class="image-container">
+
+            <img class="headshot" src="https://www.nextlevelimpacts.com/wp-content/uploads/2022/09/4dd13d6d-0ca4-4ab5-ab08-fbb5678d7365.jpg" alt="Jamie Maceroni">
+            <div class="overlay">
+                <div class="overlay-text">
+                    <a href="https://www.linkedin.com/in/jamiemaceroni/" target="_blank"><img src="https://i.imgur.com/tvDlPAG.png" width="25" height="25" /></a>
+                </div>
+            </div>
+            </div>
+            <div class="content-text">
+
+                <h2>Jamie Maceroni, Senior Talent Acquisition Specialist</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum. Egestas sed sed risus pretium quam vulputate dignissim suspendisse in. Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+                </p>
+            </div>
+        </div>
+        <!--Content 4-->
+    <div class="content2">
+        <div class="image-container">
+
+            <img class="headshot" src="https://media.licdn.com/dms/image/C4E03AQGhuZcEaEIodA/profile-displayphoto-shrink_400_400/0/1516633373191?e=1702512000&v=beta&t=NFguEw8KtY9vpovQeaev21VRrqnS-mlQkwMnmq29wJQ" alt="Cameron Massie" />
+            <div class="overlay">
+                <div class="overlay-text">
+                    <a href="https://www.linkedin.com/in/cameron-massie-218a3577/" target="_blank"><img src="https://i.imgur.com/tvDlPAG.png" width="25" height="25" /></a>
+                </div>
+            </div>
+        </div>
+            <div class="content-text">
+
+                <h2>Cameron Massie, Senior Talent Acquisition Specialist</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum. Egestas sed sed risus pretium quam vulputate dignissim suspendisse in. Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+                </p>
+            </div>
+        </div>
+
+
+</body>
+
+</html>
