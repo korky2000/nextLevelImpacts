@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 400%;
+        }
+
+        .top-navbar {
+            background-color: #004B7A;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+            .logo img {
+                margin-right: 10px;
+            }
+
+        .menu {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+        }
+
+        .main-navbar {
+            background-color: #f2f2f2;
+            color: black;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            height: 80px;
+            z-index: 1000;
+        }
+
+        .overlay {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .mainLogo {
+            display: flex;
+            align-items: center;
+        }
+
+            .mainLogo img {
+                height: 60px;
+                width: auto;
+            }
+
+        .menuMain {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #f2f2f2;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menuMain a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #004B7A;
+        }
+
+        .header {
+            background: url('diversity.png') center/cover no-repeat;
+            height: 400px;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .header-content {
+            z-index: 1;
+            padding: 50px;
+            margin: 50px;
+        }
+
+        .content {
+            background-color: #f2f2f2;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+            .content img {
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                margin-right: 20px;
+                height: 350px;
+                width: 450px; /* Adjust the spacing between image and text */
+            }
+
+        .content-text {
+            flex: 1; /* Allow the text to take remaining space */
+        }
+
+        .content h2 {
+            color: #004B7A;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #230007;
+        }
+
+
+
+        .content2 {
+            background-color: #004B7A;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+            .content2 img {
+                max-width: 100%;
+                margin-left: 20px;
+                height: 350px;
+                width: 450px;
+            }
+
+        .content2-text {
+            flex: 1;
+        }
+
+        .content2 h2 {
+            color: #886F68;
+        }
+
+        .content2 p {
+            font-size: 18px;
+            color: #E6E6E6;
+        }
+
+        .testimonial-carousel {
+            background-color: white;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            overflow: hidden;
+            border: 3px #E6E6E6 solid;
+            text-align: center;
+            box-sizing: border-box; /* Include padding and border in the element's total width */
+        }
+
+        .testimonials-content {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%; /* Ensure the content takes full width */
+        }
+
+        .testimonial {
+            flex: 0 0 100%; /* Each testimonial takes full width */
+            color: #004B7A;
+            padding: 0 20px; /* Adjust padding as needed */
+            white-space: normal;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+    </style>
+    <title>For Clients</title>
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="logo">
+            <a href="https://www.facebook.com/NextLevelImpacts" target="_blank">
+                <img src="https://i.imgur.com/rHJit0V.png" width="25"
+                     height="25" alt="Facebook Icon" />
+            </a>
+            <a href="https://www.linkedin.com/company/next-level-impacts/" target="_blank">
+                <img src="https://i.imgur.com/tvDlPAG.png" width="25"
+                     height="25" alt="LinkedIn Icon" />
+            </a>
+        </div>
+        <div class="menu">
+            <a href="#candidates">For Candidates</a>
+            <a href="#employers">For Employers</a>
+            <a href="#contact">Contact</a>
+            <a href="#careers">Careers</a>
+        </div>
+    </div>
+
+    <div class="main-navbar">
+        <div class="mainLogo">
+            <img src="https://www.nextlevelimpacts.com/wp-content/uploads/2021/03/next-level-logo.png" alt="Next Level Impacts Logo" />
+        </div>
+        <div class="menuMain">
+            <a href="#why">Why Next Level Impacts</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1>For Clients</h1>
+            <p>
+                You don’t need thousands of resume. You need the right candidates and timing is everything. The one-way virtual video interview is a efficient way to screen job candidates. The interview is recorded and can be easily shared with colleagues. Like a real interview, candidates don’t see the questions until they have to answer them. This ensures their responses are as natural as an in person interview.
+
+
+
+            </p>
+        </div>
+    </div>
+    <!--Content 1-->
+    <div class="content">
+        <img src="https://st2.depositphotos.com/3591429/8171/i/450/depositphotos_81717974-stock-photo-group-of-people-working-concept.jpg" "alt ="Image Description">
+        <div class="content-text">
+
+            <h2>Recruiting</h2>
+            <p>
+                Next Level Impacts recruiting unique recruiting process includes video and extensive data to help you find the right candidates. We have over 650 million social media connections worldwide and can get as granular as necessary for your search.
+
+            </p>
+
+
+        </div>
+    </div>
+
+    <!--Content 2-->
+    <div class="content2">
+        <div class="content2-text">
+            <h2>
+                Screening
+            </h2>
+            <p>
+                Next Level Impacts goes beyond the traditional recruiting approach. We enrich the process with video interviews. By implementing video interviews this helps everyone involved in the hiring process make better decisions about which candidates to move forward with.
+
+
+            </p>
+
+        </div>
+        <img src="https://st3.depositphotos.com/5392356/15125/i/1600/depositphotos_151252992-stock-photo-company-employees-working-in-office.jpg" "alt =" Image Description">
+    </div>
+    </div>
+    <!--Content 3-->
+    <div class="content">
+        <img src="https://st2.depositphotos.com/3591429/8171/i/450/depositphotos_81717974-stock-photo-group-of-people-working-concept.jpg" "alt ="Image Description">
+        <div class="content-text">
+
+            <h2>Interviews</h2>
+            <p>
+                At this point of the process we have a resume, social media profile and a video interview that will allow us to gain more insight on candidates in far less time. This also allows us to implement our interview playbook and refine interview questions based on video results.
+
+
+            </p>
+
+
+        </div>
+    </div>
+
+    <!--Content 2-->
+    <div class="content2">
+        <div class="content2-text">
+            <h2>Diversity and Inclusion</h2>
+            <p>
+                At Next Level Impacts we believe in the power of diversity to drive innovation and success. Our recruiting company is dedicated to fostering an inclusive hiring process that values and celebrates the unique perspectives of our diverse clientele. We strive to connect top-tier talent with forward-thinking organizations, creating dynamic teams that reflect the richness of the global workforce.
+
+            </p>
+
+        </div>
+        <img src="diversitystock.png" "alt =" Image Description">
+    </div>
+    </div>
+  
+
+</body>
+
+</html>

@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 400%;
+        }
+
+        .top-navbar {
+            background-color: #004b7a;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            /* display: flex; */
+        }
+
+            .logo img {
+                margin-right: 10px;
+                width: 25px;
+            }
+
+        .menu {
+            width: 50%;
+            /* display: flex; */
+            justify-content: space-around;
+            color: white;
+            position: relative;
+            background: #004b7a;
+            display: none;
+        }
+
+            .menu ul {
+                margin: 0;
+                margin-top: 1.6em;
+                padding: 0;
+                list-style: none;
+            }
+
+            .menu li {
+                text-align: right;
+                margin-bottom: 0.5em;
+                margin-left: 0.5em;
+            }
+
+            .menu a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+                color: #f2f2f2;
+            }
+
+                .menu a:hover {
+                    color: #000;
+                }
+
+        /****** created styling for responsive dropdown that appears at 848px */
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-toggle-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 0.7em;
+            margin-right: 1em;
+        }
+
+        /****** when checkbox is checked applys this to all preceeding navs */
+        /****** makes the dropdown appear and disappear */
+        .nav-toggle:checked ~ nav {
+            display: block;
+        }
+
+        @media (min-width: 848px) {
+            nav {
+                border: 0;
+            }
+
+            .menu ul {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 0;
+            }
+
+            .menu li {
+                margin-left: 20px;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .nav-toggle-label {
+                display: none;
+                top: -50px;
+                right: -50px;
+            }
+
+            .menuMain ul {
+                display: flex;
+                justify-content: flex-end; /* Move the menu items to the right */
+            }
+        }
+
+        /****** at this size the menuMain starts to squish so changed it to a stacked list */
+        @media (max-width: 723px) {
+            .menuMain ul {
+                flex-direction: column;
+            }
+
+            .menuMain li {
+                margin-bottom: 3px;
+            }
+        }
+
+        .main-navbar {
+            background-color: #f2f2f2;
+            color: black;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            height: 80px;
+            z-index: 1000;
+        }
+
+        .overlay {
+            background-color: rgba(0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .mainLogo {
+            display: flex;
+            align-items: center;
+        }
+
+            .mainLogo img {
+                height: 60px;
+                width: auto;
+            }
+
+        .menuMain {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+            /****** changed to ul with diplay flex  */
+            .menuMain ul {
+                display: flex;
+                list-style: none;
+            }
+
+            .menuMain li {
+                margin-left: 30px;
+            }
+
+            .menuMain a:hover {
+                color: #000;
+            }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menuMain a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #004b7a;
+        }
+
+        .header {
+            background: url("https://previews.123rf.com/images/chagin/chagin1305/chagin130500400/19729949-happy-business-people-in-a-meeting-at-office.jpg") center/cover no-repeat;
+            height: 400px;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            background-color: rgba(0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .header-content {
+            z-index: 1;
+            padding: 50px;
+            margin: 50px;
+        }
+
+        /***** changed margins to % so they shrink better */
+        .content {
+            background-color: #f2f2f2;
+            padding: 3.5%;
+            margin: 3.5%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+            .content img {
+                width: 100px;
+                height: 100px;
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                /* margin-right: 20px;  */
+                /* Adjust the spacing between image and text */
+            }
+
+        .content-text {
+            flex: 1;
+            margin-left: 20px; /* Allow the text to take remaining space */
+        }
+
+        .content h2 {
+            color: #004b7a;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #230007;
+        }
+
+        .testimonial-carousel {
+            background-color: white;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            overflow: hidden;
+            border: 3px #e6e6e6 solid;
+            text-align: center;
+            box-sizing: border-box; /* Include padding and border in the element's total width */
+        }
+
+        .testimonials-content {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%; /* Ensure the content takes full width */
+        }
+
+        .testimonial {
+            flex: 0 0 100%; /* Each testimonial takes full width */
+            color: #004b7a;
+            padding: 0 20px; /* Adjust padding as needed */
+            white-space: normal;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 860px) {
+            .content {
+                flex-direction: column;
+                /* Stack elements in a column */
+            }
+
+            .content-text {
+                margin-left: 0px;
+            }
+        }
+        .image-row {
+            display: flex;
+            justify-content: center; /* Align images at the center horizontally */
+            align-items: center; /* Align images at the center vertically */
+            margin-bottom: 20px; /* Adjust the spacing between image row and heading */
+        }
+
+            .image-row img {
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                margin-right: 10px; /* Adjust the spacing between images */
+            }
+
+        .header {
+            background: url('https://previews.123rf.com/images/chagin/chagin1305/chagin130500400/19729949-happy-business-people-in-a-meeting-at-office.jpg') center/cover no-repeat;
+            height: 400px;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-navbar">
+        <div class="logo">
+            <!-- changed social media icons to devicons to see how the look -->
+            <a href="https://www.facebook.com/NextLevelImpacts" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" />
+            </a>
+            <a href="https://www.linkedin.com/company/next-level-impacts/"
+               target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />
+            </a>
+        </div>
+
+        <!-- changed links to nav with a list to create responsive dropdown -->
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav class="menu">
+            <ul>
+                <li><a href="#candidates">For Candidates</a></li>
+                <li><a href="#employers">For Employers</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#careers">Careers</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     x="0px"
+                     y="0px"
+                     width="25"
+                     height="25"
+                     viewBox="0,0,256,256">
+                    <g fill="#ffffff"
+                       fill-rule="nonzero"
+                       stroke="none"
+                       stroke-width="1"
+                       stroke-linecap="butt"
+                       stroke-linejoin="miter"
+                       stroke-miterlimit="10"
+                       stroke-dasharray=""
+                       stroke-dashoffset="0"
+                       font-family="none"
+                       font-weight="none"
+                       font-size="none"
+                       text-anchor="none"
+                       style="mix-blend-mode: normal">
+                        <g transform="scale(5.12,5.12)">
+                            <path d="M5,8c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,23c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,38c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175z"></path>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+        </label>
+    </header>
+
+    <div class="main-navbar">
+        <div class="mainLogo">
+            <img src="https://www.nextlevelimpacts.com/wp-content/uploads/2021/03/next-level-logo.png"
+                 alt="Next Level Impacts Logo" />
+        </div>
+        <!-- changed to nav with ul for easier responsiveness  -->
+        <nav class="menuMain">
+            <ul>
+                <li><a href="#why">Why Next Level Impacts</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1>Heading</h1>
+            <p>
+                . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+    </div>
+
+    <!--Content 1-->
+    <div class="content">
+        <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg"
+             alt="Image Description" />
+        <div class="content-text">
+            <h2>Heading</h2>
+            <p>
+                Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum.
+                Egestas sed sed risus pretium quam vulputate dignissim suspendisse in.
+                Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh
+                cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed
+                turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam
+                ultrices sagittis orci a scelerisque purus.
+            </p>
+        </div>
+    </div>
+
+    <!--Content 2-->
+    <div class="content">
+        <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg"
+             alt="Image Description" />
+        <div class="content-text">
+            <h2>Heading</h2>
+            <p>
+                Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum.
+                Egestas sed sed risus pretium quam vulputate dignissim suspendisse in.
+                Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh
+                cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed
+                turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam
+                ultrices sagittis orci a scelerisque purus.
+            </p>
+        </div>
+    </div>
+
+    <!--Content 3-->
+    <div class="content">
+        <div class="image-row">
+
+            <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg" />
+            <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg" />
+
+                 alt="Image Description" />
+            <div class="content-text">
+                </div>
+                <h2>Heading</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum.
+                    Egestas sed sed risus pretium quam vulputate dignissim suspendisse in.
+                    Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh
+                    cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed
+                    turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam
+                    ultrices sagittis orci a scelerisque purus.
+                </p>
+            </div>
+        </div>
+
+        <!--Content 4-->
+        <div class="content">
+            <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg"
+                 alt="Image Description" />
+            <div class="content-text">
+                <h2>Heading</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum.
+                    Egestas sed sed risus pretium quam vulputate dignissim suspendisse in.
+                    Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh
+                    cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed
+                    turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam
+                    ultrices sagittis orci a scelerisque purus.
+                </p>
+            </div>
+        </div>
+
+        <!--Content 5-->
+        <div class="content">
+            <img src="https://t3.ftcdn.net/jpg/04/40/29/94/360_F_440299419_s4b12RfNDJvpplheVDmKdhFGJiHlAYNs.jpg"
+                 alt="Image Description" />
+            <div class="content-text">
+                <h2>Heading</h2>
+                <p>
+                    Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum.
+                    Egestas sed sed risus pretium quam vulputate dignissim suspendisse in.
+                    Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh
+                    cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed
+                    turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam
+                    ultrices sagittis orci a scelerisque purus.
+                </p>
+            </div>
+        </div>
+</body>
+</html>

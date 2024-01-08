@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 400%;
+        }
+
+        .top-navbar {
+            background-color: #004B7A;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+            .logo img {
+                margin-right: 10px;
+            }
+
+        .menu {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+        }
+
+        .main-navbar {
+            background-color: #f2f2f2;
+            color: black;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            position: static;
+            width: 90%;
+            height: 80px;
+            z-index: 1000;
+        }
+
+        .overlay {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .mainLogo {
+            display: flex;
+            align-items: center;
+        }
+
+            .mainLogo img {
+                height: 60px;
+                width: auto;
+            }
+
+        .menuMain {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+            .menuMain a:hover {
+                text-shadow: #004B7A 1px 0 10px;
+            }
+
+        .menu a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #f2f2f2;
+        }
+
+            .menu a:hover {
+                text-shadow: #f2f2f2 1px 0 10px;
+            }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menuMain a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #004B7A;
+        }
+
+        .header {
+            background: url('cancer.jpg') center no-repeat;
+            height: 400px;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            background-color: rgba( 0, 75, 122, 0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .header-content {
+            z-index: 1;
+            padding: 50px;
+            margin: 50px;
+        }
+
+        .content {
+            background-color: #f2f2f2;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+            .content img {
+                max-width: 100%; /* Ensure the image doesn't exceed its container */
+                margin-right: 20px; /* Adjust the spacing between image and text */
+            }
+
+        .content-text {
+            flex: 1; /* Allow the text to take remaining space */
+        }
+
+        .content h2 {
+            color: #004B7A;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #230007;
+        }
+
+
+
+        .content2 {
+            background-color: #004B7A;
+            padding: 50px;
+            margin: 50px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .content2-text {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content2 img {
+            max-width: 100%;
+            margin-left: 20px;
+        }
+
+        .content2-text {
+            flex: 1;
+        }
+
+        .content2 h2 {
+            color: #886F68;
+        }
+
+        .content2 p {
+            font-size: 18px;
+            color: #E6E6E6;
+        }
+
+        .form-container {
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-container h2 {
+                text-align: center;
+                color: #004B7A;
+                margin-bottom: 20px;
+            }
+
+            .form-container label {
+                display: block;
+                margin-bottom: 10px;
+                color: #004B7A;
+            }
+
+            .form-container input[type="text"],
+            .form-container input[type="file"] {
+                width: 100%;
+                padding: 8px 1px; /* Added more padding on the right side */
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+            .form-container input[type="submit"] {
+                background-color: #004B7A;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+                transition: background-color 0.3s ease;
+            }
+
+                .form-container input[type="submit"]:hover {
+                    background-color: #002c45;
+                }
+
+        .a {
+            text-decoration: none;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rounded-button {
+            display: inline-block;
+            margin-top: 10px; /* Adjust the top margin as needed to create space between text and button */
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #f2f2f2;
+            color: #f2f2f2;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .rounded-button:hover {
+                background-color: #f2f2f2;
+                color: #000;
+            }
+
+    </style>
+    <title>Genetics</title>
+    <script>function showAlert(message) {
+      alert(message);
+    }</script>
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="logo">
+            <a href="https://www.facebook.com/NextLevelImpacts" target="_blank">
+                <img src="https://i.imgur.com/rHJit0V.png" width="25"
+                     height="25" alt="Facebook Icon" />
+            </a>
+            <a href="https://www.linkedin.com/company/next-level-impacts/" target="_blank">
+                <img src="https://i.imgur.com/tvDlPAG.png" width="25"
+                     height="25" alt="LinkedIn Icon" />
+            </a>
+        </div>
+        <div class="menu">
+            <a href="#candidates">For Candidates</a>
+            <a href="#employers">For Employers</a>
+            <a href="#contact">Contact</a>
+            <a href="#careers">Home</a>
+        </div>
+    </div>
+
+    <div class="main-navbar">
+        <div class="mainLogo">
+            <a href="NextLevelImpacts.html"><img src="https://www.nextlevelimpacts.com/wp-content/uploads/2021/03/next-level-logo.png" alt="Next Level Impacts Logo" /></a>
+        </div>
+        <div class="menuMain">
+            <a href="#why">Why Next Level Impacts</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1>Genetics</h1>
+            <p>
+                . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                id est laborum.
+            </p>
+        </div>
+    </div>
+    <!--Content 1-->
+    <div class="content">
+        <img src="https://thumbs.dreamstime.com/z/scientist-working-multi-well-plate-cell-culture-lab-technician-pipetting-genetic-laboratory-135849335.jpg?w=992" height="350px" ; width="500px" ; alt="Diagnostics Stock Image">
+        <div class="content-text">
+
+            <h2>Genetics as a Career Path</h2>
+            <p>
+                Ut sem viverra aliquet eget sit. Sit amet cursus sit amet dictum. Egestas sed sed risus pretium quam vulputate dignissim suspendisse in. Aenean et tortor at risus viverra adipiscing at. Quis viverra nibh cras pulvinar mattis nunc sed blandit libero. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+            </p>
+        </div>
+    </div>
+
+
+    <!--Content 2-->
+    <div class="content2">
+        <div class="content2-text">
+        <div class="button-container">
+            <h2>Start Your Genetics Career Today</h2>
+            <a href="https://www.nextlevelimpacts.com/wp-content/plugins/bullhorn-oscp/#/" class="rounded-button">View Job Postings</a>
+        </div>
+    </div>
+     </div>
+
+
+
+</body>
+
+</html>
